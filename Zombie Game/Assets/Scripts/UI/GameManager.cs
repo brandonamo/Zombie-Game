@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    bool Paused = false;
+    public bool Paused = false;
     public GameObject PauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
         Paused = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void UnPause()
@@ -42,12 +43,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         PauseMenu.SetActive(false);
         Paused = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Quit()
