@@ -31,7 +31,7 @@ public class GunScript : MonoBehaviour
     {
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, range))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             if (hit.transform.GetComponent<Zombie>())
             {
                 Destroy(hit.transform.gameObject);

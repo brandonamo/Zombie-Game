@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
         Paused = true;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void UnPause()
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         PauseMenu.SetActive(false);
         Paused = false;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void MainMenu()
