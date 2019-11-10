@@ -34,6 +34,11 @@ public class GunScript : MonoBehaviour
             //Debug.Log(hit.transform.name);
             if (hit.transform.GetComponent<Zombie>())
             {
+                // killcount after a hit
+                //{
+                UIManager.instance.killcount++;
+                UIManager.instance.UpdateKillcounterUI();
+                //}
                 Destroy(hit.transform.gameObject);
             }
         }
