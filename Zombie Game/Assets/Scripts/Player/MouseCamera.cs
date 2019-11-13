@@ -11,20 +11,18 @@ public class MouseCamera : MonoBehaviour
     public float smoothing = 2.0f;
 
     GameObject player;
-    GameManager Game;
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = transform.parent.gameObject;
-        Game = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!Game.Paused)
+        if (!GameManager.Instance.Paused)
         {
             var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 

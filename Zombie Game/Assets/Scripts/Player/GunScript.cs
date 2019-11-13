@@ -6,17 +6,11 @@ public class GunScript : MonoBehaviour
 {
     public float range = 100f;
     public Camera fpsCam;
-    GameManager Game;
-
-    private void Start()
-    {
-        Game = FindObjectOfType<GameManager>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!Game.Paused)
+        if (!GameManager.Instance.Paused)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -32,14 +26,10 @@ public class GunScript : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, range))
         {
             //Debug.Log(hit.transform.name);
-            if (hit.transform.GetComponent<Zombie>())
+            Zombie Zom = hit.transform.GetComponent<Zombie>();
+            if (Zom && Zom.Die())
             {
-                // killcount after a hit
-                //{
-                UIManager.instance.killcount++;
-                UIManager.instance.UpdateKillcounterUI();
-                //}
-                Destroy(hit.transform.gameObject);
+                GameManager.Instance.CurrentKills++;
             }
         }
     }
